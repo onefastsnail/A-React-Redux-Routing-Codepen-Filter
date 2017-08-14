@@ -11,15 +11,13 @@ class Sidebar extends React.Component {
   }
 
   //a method to handle our clicks
-  handleClick(item) {
-    console.log(item); // null
-  }
+  handleClick(item) {}
 
   //Our method used by react, and is required for components
   render() {
 
     //we need to capture the current scope of this before we venture in our map calls
-    var self = this;
+    let self = this;
 
     //we also need to bind self within the map iteration so the current method is called
 

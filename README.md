@@ -1,4 +1,4 @@
-# React Redux Blog Filter
+# Codepen React Redux Filter
 
 ## Usage
 
@@ -9,6 +9,7 @@
 
 ## Notes
 * Using Webpack for speedy development
+* JSON is influenced from the CodePen v2 API, an unofficial, public JSON API for CodePen [http://cpv2api.com/](http://cpv2api.com/)
 
 ## Contributors
 Paul Stewart

@@ -54,9 +54,9 @@ const pensReducer = (state = initialState, action) => {
 
                 });
 
-                // filter out our duplicates, cheap i know!
-                y.types = penTypes.filter(function (item, pos) { return penTypes.indexOf(item) == pos });
-                y.users = penUsers.filter(function (item, pos) { return penUsers.indexOf(item) == pos });
+                // filter out our duplicates, cheap i know!!
+                y.types = penTypes.filter(function (item, pos) { return penTypes.indexOf(item) == pos; });
+                y.users = penUsers.filter(function (item, pos) { return penUsers.indexOf(item) == pos; });
 
                 // then sort
                 y.types.sort();
@@ -71,7 +71,7 @@ const pensReducer = (state = initialState, action) => {
 
             return y; //and return
 
-        case types.FILTER_PENS_BY_TYPE:
+        case types.FILTER_PENS_BY_TYPE: {
             y = Object.assign({}, state);
 
             // lets create a copy of the array as above does a shallow clone
@@ -93,6 +93,7 @@ const pensReducer = (state = initialState, action) => {
             y[action.payload.key] = x;
 
             return y; //and return
+        }
 
         case types.SEARCH_PENS:
             y = Object.assign({}, state);
@@ -111,6 +112,6 @@ const pensReducer = (state = initialState, action) => {
         default:
             return state;
     }
-}
+};
 
 export default pensReducer;

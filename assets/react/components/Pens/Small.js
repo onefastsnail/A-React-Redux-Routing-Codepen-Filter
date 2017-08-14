@@ -13,7 +13,7 @@ const Pen = function (props, key, handler) {
         };
 
         handler(x);
-    }
+    };
 
     const handleUserChange = function(e){
 
@@ -23,11 +23,11 @@ const Pen = function (props, key, handler) {
         };
 
         handler(x);
-    }
+    };
 
     const backgroundStyle = {
         backgroundImage: 'url(' + props.image + ')'
-    }
+    };
 
     return (
         <div className="l-card-listing__item animated zoomIn" key={key}>

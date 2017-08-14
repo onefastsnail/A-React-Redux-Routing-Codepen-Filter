@@ -11,31 +11,31 @@ export function searchPens(query) {
 
 export const showMorePens = () => ({
     type: types.SHOW_MORE_PENS
-})
+});
 
 export const requestPens = () => ({
     type: types.FETCH_PENS_REQUEST
-})
+});
 
 export const filterByType = (data) => ({
     type: types.FILTER_PENS_BY_TYPE,
     payload: data,
-})
+});
 
 export const receivePens = (json) => ({
     type: types.FETCH_PENS_SUCCESS,
     pens: json,
-})
+});
 
 export const requestPen = () => ({
     type: types.FETCH_PEN_REQUEST
-})
+});
 
 
 export const receivePen = (json) => ({
     type: types.FETCH_PEN_SUCCESS,
     pen: json,
-})
+});
 
 export function fetchPens() {
 
@@ -48,7 +48,7 @@ export function fetchPens() {
         // First dispatch: the app state is updated to inform
         // that the API call is starting.
 
-        dispatch(requestPens())
+        dispatch(requestPens());
 
         // The function called by the thunk middleware can return a value,
         // that is passed on as the return value of the dispatch method.
@@ -64,11 +64,11 @@ export function fetchPens() {
                 // Here, we update the app state with the results of the API call.
 
                 dispatch(receivePens(json))
-            )
+            );
 
         // In a real world app, you also want to
-        // catch any error in the network call.
-    }
+        // catch any error in the network call?
+    };
 }
 
 export function fetchPen() {
@@ -77,6 +77,6 @@ export function fetchPen() {
 
         dispatch(receivePen({ id: 92992 }));
 
-    }
+    };
 
 }

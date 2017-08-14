@@ -50,6 +50,6 @@ class Filter extends React.Component {
 
     }
 
-};
+}
 
 export default Filter;
