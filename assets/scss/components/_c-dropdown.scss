@@ -1,0 +1,82 @@
+.c-dropdown {
+    background: #dd4b39;
+    position: relative;
+    z-index: 100;
+
+    //our toggle for hovering on mobile
+    &__toggle {
+        display: inline-block;
+        background: #dd4b39;
+        padding: 1rem 3rem;
+        width: 100%;
+        color: #fff;
+        cursor: pointer;
+        position: relative;
+
+        span {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 1rem;
+        }
+    }
+
+    //on component hover lets animate the list
+    &:hover {
+        .c-dropdown__list {
+            transform: translate(0, 0) scale3d(1, 1, 1);
+            opacity: 1;
+        }
+    }
+
+    &__list {
+        padding: 0;
+        margin: 0;
+        transition: all .2s cubic-bezier(.19, 1, .22, 1);
+        opacity: 0;
+        transform: translate(0, -50%) scale3d(1, 0, 1);
+        position: absolute;
+        width: 100%;
+
+        &__item {
+            list-style: none;
+            a {
+                display: inline-block;
+                padding: 1rem 3rem;
+                color: #fff;
+                background: #00aced;
+                width: 100%;
+                box-sizing: border-box;
+                text-decoration: none;
+                position: relative;
+
+                &:before {
+                    content: " ";
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 1rem;
+                    width: 10px;
+                    height: 10px;
+                    background: red;
+                    opacity: 0;
+                }
+            }
+            
+
+            &:hover {
+                a {
+                    background: darken(#00aced, 10%);
+                }
+            }
+
+            &--active {
+                a {
+                    &:before {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}

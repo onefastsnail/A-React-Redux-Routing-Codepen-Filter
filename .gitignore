@@ -27,7 +27,8 @@ build/Release
 node_modules
 
 #dist folder
-dist
+assets/dist
+assets/vendor
 
 #Webstorm metadata
 .idea

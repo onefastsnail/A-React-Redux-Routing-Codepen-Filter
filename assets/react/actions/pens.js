@@ -1,8 +1,11 @@
 import * as types from './types';
 
-// a action creater, it creates an action payload
+/*
+    an action creater, it creates an action payload
+    actions are the only way to get data into the store
+*/
 export function searchPens(query) {
-    // in es6 the second property we are not using left hand assignment as if property name matches then it will do this for us
+    // in es6 properties being passed without assignment will be assigned to by thier var name in this content, kind of like compact in php
     return { type: types.SEARCH_PENS, query };
 }
 

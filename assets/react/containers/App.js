@@ -5,16 +5,14 @@ import { Link, IndexLink } from 'react-router';
 /*
     React router will handle the children property within the props property
 */
-
 class App extends React.Component {
 
-    //our constructor
     constructor(props) {
-        //this calls the parent constructor
+
+        // this calls the parent constructor
         super(props);
     }
 
-    //Our method used by react, and is required for components
     render() {
         return (
             <section>
@@ -29,8 +27,6 @@ class App extends React.Component {
                 {this.props.children}
 
             </section>
-
-
         );
     }
 }

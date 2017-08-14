@@ -1,0 +1,34 @@
+.s-posts {
+
+    background: #F5F7F7;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    &__navigation {
+
+        &__container {
+            @include container();
+            max-width: 992px;
+            margin: auto;
+        }
+
+        margin-bottom: 2rem;
+
+    }
+
+    &__results {
+        &__container {
+            @include container();
+            max-width: 2000px;
+        }
+
+    }
+
+    // bad but for now im doing it
+    &__search {
+        height: 100%;
+        width: 100%;
+        padding: 1rem;
+    }   
+
+}

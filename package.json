@@ -7,7 +7,7 @@
     "start": "npm-run-all --parallel server dev",
     "server": "http-server",
     "dev": "webpack -d --watch",
-    "build" : "webpack -p"
+    "build": "webpack -p"
   },
   "author": "",
   "license": "ISC",
@@ -21,7 +21,6 @@
     "react-router-redux": "4.0.4",
     "redux": "3.5.2",
     "redux-thunk": "2.0.1",
-    "webpack": "^1.13.0",
     "http-server": "^0.9.0",
     "redux-immutable-state-invariant": "1.2.3",
     "babel-core": "6.8.0",
@@ -31,5 +30,11 @@
     "npm-run-all": "1.8.0",
     "babel-register": "6.8.0",
     "babel-polyfill": "6.8.0"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.4",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.5.4"
   }
 }

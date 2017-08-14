@@ -1,3 +1,5 @@
+// lets setup some constants so our actions and stores have some common ground
+
 export const FETCH_PENS_REQUEST = 'FETCH_PENS_REQUEST';
 export const FETCH_PENS_FAILURE = 'FETCH_PENS_FAILURE';
 export const FETCH_PENS_SUCCESS = 'FETCH_PENS_SUCCESS';

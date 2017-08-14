@@ -11,19 +11,17 @@ import Pen from './Small';
 
 class Home extends React.Component {
 
-    //our constructor
     constructor(props) {
-        //this calls the parent constructor
+
+        // this calls the parent constructor
         super(props);
 
-        //lets bind this class context to our methods
-        //we do this here as within the render method is not ideal for performance due to this method being called by react upon state change
+        // lets correct the this context of some of these class methods
         this.handleShowMore = this.handleShowMore.bind(this);
         this.handleQueryChange = this.handleQueryChange.bind(this);
     }
 
     handleQueryChange(event) {
-        //any component wrapped with connect() call will receive a dispatch function as a prop, and any state it needs from the global state
         //this.props.dispatch(penActions.searchPens(event.target.value)); // or
         this.props.dispatch(this.props.actions.searchPens(event.target.value));
     }
@@ -76,11 +74,13 @@ class Home extends React.Component {
 //   end: PropTypes.number.isRequired
 // };
 
-// connecting redux to react
-// map the store state as props to this component
-// whilst our store won't contain the filtered list, it tells us everything we need to know to construct the filtered list
+/*
+    connecting redux to react
+    map the store state as props to this component
+*/
 function mapStateToProps(state, ownProps) {
 
+    //create a var for us to send as props to our component
     const y = {
         filter: {
             query: state.pens.query,
@@ -94,6 +94,9 @@ function mapStateToProps(state, ownProps) {
         query: state.pens.query
     };
 
+    // whilst our store won't contain the filtered list, it tells us everything we need to know to construct the filtered list, so lets do this here
+
+    // if we have a search string
     if (y.query != '') {
         y.pens = y.pens.filter(function (el) {
             if (el.title.toLowerCase().indexOf(y.query.toLowerCase()) > -1) {
@@ -102,9 +105,8 @@ function mapStateToProps(state, ownProps) {
         });
     }
 
-    // if we have types selected
+    // if we have types selected, perform a filter
     if (y.filter.typesSelected.length > 0) {
-        //lets filter our set
         y.pens = y.pens.filter(function (item) {
 
             if (y.filter.typesSelected.indexOf(item.type) > -1) {
@@ -113,9 +115,8 @@ function mapStateToProps(state, ownProps) {
         });
     }
 
-    // if we have users selected
+    // if we have users selected, perform a filter
     if (y.filter.usersSelected.length > 0) {
-        //lets filter our set
         y.pens = y.pens.filter(function (item) {
 
             if (y.filter.usersSelected.indexOf(item.user) > -1) {
@@ -124,16 +125,19 @@ function mapStateToProps(state, ownProps) {
         });
     }
 
-    //now lets paginate
+    // now lets paginate
     y.pens = y.pens.slice(y.start, y.end);
 
     return y;
 }
 
-// what actions we want to expose to our component
-// without this being provided in the connect method, it will automagically add the dispatch method in the component props
-// bindActionCreators binds all actions supplied to this.props.actions.XXX within the component
-// doing this allows our components to not have to know we are using redux, but simply call the prop
+/*
+    what actions we want to expose to our component
+    without this being provided in the connect method, it will automagically add the dispatch method in the component props
+    any component wrapped with connect() call will receive a dispatch function as a prop, and any state it needs from the global state
+    bindActionCreators binds all actions supplied to this.props.actions.XXX within the component
+    doing this allows our components to not have to know we are using redux, but simply call the prop
+*/
 function mapDispatchToProps(dispatch) {
     return {
         dispatch,
@@ -142,10 +146,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 /*
-    connect returns a function which is then executed
-    compare to flux we do not have to manually subscrive to events emitted from the store upon change
+    connect returns a function which is then executed with the Home component
+    compare to flux we do not have to manually subsbrive to events emitted from the store upon change as redux does this for us
     easier use of stateless components, as no lifecycle methods required as above
     map only state we need, better performance
-    2 paranthesis like below, connect returns, then we calls the second with the results
 */
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
