@@ -1,10 +1,10 @@
-var webpack = require('webpack');
-var path = require('path');
+const path = require('path')
+const webpack = require('webpack')
 
-var BUILD_DIR = path.resolve(__dirname, 'assets/dist/react');
-var APP_DIR = path.resolve(__dirname, 'assets/react');
+const BUILD_DIR = path.resolve(__dirname, 'assets/dist/react');
+const APP_DIR = path.resolve(__dirname, 'assets/react');
 
-var config = {
+const config = {
   entry: APP_DIR + '/index.js',
   output: {
     path: BUILD_DIR,
@@ -16,9 +16,13 @@ var config = {
         test : /\.js?/,
         include : APP_DIR,
         loader : 'babel-loader'
+      },
+      {
+        test : /\.scss$/,
+        loader : 'style-loader!css-loader!sass-loader'
       }
     ]
   }
 };
 
-module.exports = config;
+module.exports = config

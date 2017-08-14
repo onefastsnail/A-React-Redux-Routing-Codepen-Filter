@@ -8,6 +8,9 @@ import configureStore from './store/index';
 import { fetchPens } from './actions/pens';
 import App from './components/Hello';
 
+// lets import our sexy style sheets
+import '../scss/main.scss';
+
 /*
      lets create a redux store that holds our complete app state in 1 store only, a single source of truth
      create an instance of our store
