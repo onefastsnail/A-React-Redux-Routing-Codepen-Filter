@@ -29,12 +29,13 @@ class Home extends React.Component {
     }
 
     handleShowMore() {
-        //any component wrapped with connect() call will receive a dispatch function as a prop, and any state it needs from the global state
-        //this.props.dispatch(penActions.showMorePosts());
+        this.props.actions.showMorePens();
     }
 
     //Our method used by react, and is required for components
     render() {
+
+        let self = this;
 
         return (
             <section className="s-posts">
@@ -53,7 +54,7 @@ class Home extends React.Component {
                         <div className="l-card-listing">
 
                             {this.props.pens.map(function (item, i) {
-                                return Pen(item, i);
+                                return Pen(item, i, self.props.actions.filterByType);
                             })}
 
                             <a href="javascript:;" onClick={this.handleShowMore}>Show More</a>
@@ -122,6 +123,9 @@ function mapStateToProps(state, ownProps) {
             }
         });
     }
+
+    //now lets paginate
+    y.pens = y.pens.slice(y.start, y.end);
 
     return y;
 }

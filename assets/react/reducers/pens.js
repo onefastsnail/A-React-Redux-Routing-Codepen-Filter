@@ -15,8 +15,8 @@ const initialState = {
     query: '',
     sortBy: 'newest',
 
-    end: 6,
-    perPage: 6
+    end: 16,
+    perPage: 16
 };
 
 //nice now in es6 func args defaults are used when an argument is either omitted or undefined, therefore we could set default state.

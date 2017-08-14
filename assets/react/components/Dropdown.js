@@ -15,7 +15,7 @@ class Dropdown extends React.Component {
 
         if (typeof (e.target.dataset.value) === 'undefined') return false;
 
-        var x = {
+        let x = {
             key: this.props.filter,
             value: e.target.dataset.value
         };
