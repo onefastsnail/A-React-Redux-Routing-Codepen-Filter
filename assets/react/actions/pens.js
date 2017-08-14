@@ -14,6 +14,10 @@ export const requestPens = () => ({
     type: types.FETCH_PENS_REQUEST
 })
 
+export const filterByType = (data) => ({
+    type: types.FILTER_PENS_BY_TYPE,
+    payload: data,
+})
 
 export const receivePens = (json) => ({
     type: types.FETCH_PENS_SUCCESS,

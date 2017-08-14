@@ -1,5 +1,4 @@
 import React from 'react';
-//import PostActions from '../../actions/PostActions';
 
 class Dropdown extends React.Component {
 
@@ -16,12 +15,13 @@ class Dropdown extends React.Component {
 
         if (typeof (e.target.dataset.value) === 'undefined') return false;
 
-        var x = {};
-        x[this.props.filter] = e.target.dataset.value;
+        var x = {
+            key: this.props.filter,
+            value: e.target.dataset.value
+        };
 
-        console.log(x);
+        this.props.handler(x);
 
-        //PostActions.filterPosts(x);
     }
 
     //Our method used by react, and is required for components

@@ -24,7 +24,8 @@ class Home extends React.Component {
 
     handleQueryChange(event) {
         //any component wrapped with connect() call will receive a dispatch function as a prop, and any state it needs from the global state
-        this.props.dispatch(penActions.searchPens(event.target.value));
+        //this.props.dispatch(penActions.searchPens(event.target.value)); // or
+        this.props.dispatch(this.props.actions.searchPens(event.target.value));
     }
 
     handleShowMore() {
@@ -40,6 +41,7 @@ class Home extends React.Component {
 
                 <Filter
                     filter={this.props.filter}
+                    handleTypeChange={this.props.actions.filterByType}
                     handleClearFilter={this.handleShowMore}
                     handleQueryChange={this.handleQueryChange}
                     handleSortChange={this.handleShowMore}
@@ -75,8 +77,10 @@ class Home extends React.Component {
 
 // connecting redux to react
 // map the store state as props to this component
+// whilst our store won't contain the filtered list, it tells us everything we need to know to construct the filtered list
 function mapStateToProps(state, ownProps) {
-    return {
+
+    const y = {
         filter: {
             query: state.pens.query,
             types: state.pens.types,
@@ -84,10 +88,42 @@ function mapStateToProps(state, ownProps) {
             users: state.pens.users,
             usersSelected: state.pens.usersSelected
         },
-        pens: state.pens.filtered,
+        pens: state.pens.pens,
         end: state.pens.end,
         query: state.pens.query
     };
+
+    if (y.query != '') {
+        y.pens = y.pens.filter(function (el) {
+            if (el.title.toLowerCase().indexOf(y.query.toLowerCase()) > -1) {
+                return el;
+            }
+        });
+    }
+
+    // if we have types selected
+    if (y.filter.typesSelected.length > 0) {
+        //lets filter our set
+        y.pens = y.pens.filter(function (item) {
+
+            if (y.filter.typesSelected.indexOf(item.type) > -1) {
+                return item;
+            }
+        });
+    }
+
+    // if we have users selected
+    if (y.filter.usersSelected.length > 0) {
+        //lets filter our set
+        y.pens = y.pens.filter(function (item) {
+
+            if (y.filter.usersSelected.indexOf(item.user) > -1) {
+                return item;
+            }
+        });
+    }
+
+    return y;
 }
 
 // what actions we want to expose to our component

@@ -11,7 +11,7 @@ class Filter extends React.Component {
 
     componentDidMount(){
         // for nice UX lets focus on our input upon rendering
-        //$('.s-posts__search').focus();
+        $('.s-posts__search').focus();
     }
 
     // our method used by react, and is required for components
@@ -32,6 +32,7 @@ class Filter extends React.Component {
                                 title="Type"
                                 options={this.props.filter.types}
                                 selected={this.props.filter.typesSelected}
+                                handler={this.props.handleTypeChange}
                             />
                         </div>
                         <div className="col-sm-4">
@@ -40,6 +41,7 @@ class Filter extends React.Component {
                                 title="User"
                                 options={this.props.filter.users}
                                 selected={this.props.filter.usersSelected}
+                                handler={this.props.handleTypeChange}
                             />
                         </div>
                     </div>

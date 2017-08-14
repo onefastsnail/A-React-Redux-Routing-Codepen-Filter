@@ -3,11 +3,10 @@ import * as types from '../actions/types';
 // initial state of this branch of the store
 const initialState = {
     pens: [],
-    filtered: [],
 
     pen: null,
 
-    types: [],
+    types: ['layout', 'component'],
     typesSelected: [],
 
     users: [],
@@ -41,7 +40,26 @@ const pensReducer = (state = initialState, action) => {
             y.pens = action.pens;
             y.filtered = action.pens;
 
-            //lets get all
+            // if we dont have users then must be first fetch, so lets populate that array
+            if (y.users.length == 0) {
+                let penUsers = [];
+                let penTypes = [];
+
+                // lets now populate our filter dropdown values
+                y.pens.map(function (item, i) {
+
+                    // lets save our types
+                    penTypes.push(item.type);
+                    penUsers.push(item.user);
+
+                });
+
+                y.types = penTypes.filter(function (item, pos) { return penTypes.indexOf(item) == pos });
+                y.types.sort();
+
+                y.users = penUsers.filter(function (item, pos) { return penUsers.indexOf(item) == pos });
+                y.users.sort();
+            }
 
             return y;
 
@@ -51,20 +69,33 @@ const pensReducer = (state = initialState, action) => {
 
             return y; //and return
 
+        case types.FILTER_PENS_BY_TYPE:
+            y = Object.assign({}, state); //create a clone, but only shallow, nested objects require further work
+
+            // lets create a copy of the array as above does a shallow clone
+            // and arrays are passed by reference also
+            let x = y[action.payload.key].slice();
+
+            // find our match
+            let match = x.indexOf(action.payload.value);
+
+            // if we have a match, remove from array
+            if (match > -1) {
+                x.splice(match, 1);
+            }
+            else {
+                x.push(action.payload.value); //increment our per ending value
+            }
+
+            // finally append to main object
+            y[action.payload.key] = x;
+
+            return y; //and return
+
         case types.SEARCH_PENS:
             y = Object.assign({}, state); //create clone of current state
 
             y.query = action.query;
-
-            y.filtered = y.pens; //a fresh copy of pens to filter
-
-            if (y.query != '') {
-                y.filtered = y.filtered.filter(function (el) {
-                    if (el.title.toLowerCase().indexOf(y.query.toLowerCase()) > -1) {
-                        return el;
-                    }
-                });
-            }
 
             return y;
 
