@@ -24,6 +24,7 @@ const initialState = {
 * as reducers are actually called once when the store is created and then again after upon defined dispatches
 * we always return a new version of state, never modify it!
 * spread operator
+* reducers must be synchronous. they return the new state.
 */
 const pensReducer = (state = initialState, action) => {
 

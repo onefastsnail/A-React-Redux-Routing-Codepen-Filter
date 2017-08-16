@@ -10,7 +10,13 @@
 ## How it works
 
 * We create our routes as normal
-* We then wrap our routes within a provider component supplied from react-redux which attaches our state/store to our react application
+* We then wrap our routes within a provider component supplied from `react-redux` which attaches our state/store to our react application
+* On our controller/container components we then use the connect method from `react-redux` to map our actions and props to that components properties.
+
+### Timeline
+
+* Upon bootup we trigger a dispatch with an action creator.
+* This action creator submits an async request off to our API.
 * 
 
 ## Notes

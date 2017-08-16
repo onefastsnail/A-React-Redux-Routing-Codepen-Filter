@@ -1,3 +1,4 @@
+import axios from 'axios';
 import * as types from './types';
 
 /*
@@ -49,9 +50,7 @@ export function fetchPens() {
 
     return function (dispatch) {
 
-        // First dispatch: the app state is updated to inform
-        // that the API call is starting.
-
+        // dispatch an action creator to say we have began to fetch pens
         dispatch(requestPens());
 
         // The function called by the thunk middleware can return a value,
@@ -60,18 +59,20 @@ export function fetchPens() {
         // In this case, we return a promise to wait for.
         // This is not required by thunk middleware, but it is convenient for us.
 
-        return fetch('assets/api/pens.json')
-            .then(response => response.json())
-            .then(json =>
+        // lets now send async call to get some data
+        axios.get('assets/api/pens.json', {
+            params: {
+                ID: 12345
+            }
+        })
+        .then(function (response) {
+            //once we have some data lets dispatch another redux event for our reducers to update state
+            dispatch(receivePens(response.data))
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
-                // We can dispatch many times!
-                // Here, we update the app state with the results of the API call.
-
-                dispatch(receivePens(json))
-            );
-
-        // In a real world app, you also want to
-        // catch any error in the network call?
     };
 }
 

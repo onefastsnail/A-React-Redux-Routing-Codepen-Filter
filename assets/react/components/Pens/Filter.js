@@ -9,7 +9,7 @@ class Filter extends React.Component {
 
     componentDidMount() {
         // for nice UX lets focus on our input upon rendering
-        $('.s-posts__search').focus();
+        document.querySelector('.s-posts__search').focus();
     }
 
     render() {
