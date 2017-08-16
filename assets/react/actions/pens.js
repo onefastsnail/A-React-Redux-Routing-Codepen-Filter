@@ -13,6 +13,10 @@ export const showMorePens = () => ({
     type: types.SHOW_MORE_PENS
 });
 
+export const clearFilter = () => ({
+    type: types.CLEAR_FILTER
+});
+
 export const requestPens = () => ({
     type: types.FETCH_PENS_REQUEST
 });

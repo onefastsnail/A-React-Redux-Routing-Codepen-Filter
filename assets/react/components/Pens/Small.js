@@ -36,7 +36,7 @@ const Pen = function (props, key, handler) {
                 <div className="c-card__content">
                     <p className="c-card__meta"><a href="javascript:;" onClick={handleTypeChange} data-value={props.type}>{props.type}</a></p>
                     <h3 className="c-card__title"><a href={props.link} target="_blank">{props.title}</a></h3>
-                    <p className="c-card__author">by <a href="javascript:;" target="_blank" onClick={handleUserChange} data-value={props.user}>{props.user}</a></p>
+                    <p className="c-card__author">By <a href="javascript:;" target="_blank" onClick={handleUserChange} data-value={props.user}>{props.user}</a></p>
                 </div>
             </div>
         </div>

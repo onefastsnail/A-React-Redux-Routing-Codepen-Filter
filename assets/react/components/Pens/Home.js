@@ -19,6 +19,7 @@ class Home extends React.Component {
         // lets correct the this context of some of these class methods
         this.handleShowMore = this.handleShowMore.bind(this);
         this.handleQueryChange = this.handleQueryChange.bind(this);
+        this.handleShowMoreOrClear = this.handleShowMoreOrClear.bind(this);
     }
 
     handleQueryChange(event) {
@@ -30,10 +31,20 @@ class Home extends React.Component {
         this.props.actions.showMorePens();
     }
 
+    handleShowMoreOrClear() {
+        this.props.actions.clearFilter();
+    }
+
     //Our method used by react, and is required for components
     render() {
 
         let self = this;
+
+        let showMoreOrClear;
+
+        if(this.props.end < this.props.total){
+            showMoreOrClear = <a href="javascript:;" className="c-btn" onClick={this.handleShowMore}>Show More</a>;
+        }
 
         return (
             <section className="s-posts">
@@ -55,9 +66,12 @@ class Home extends React.Component {
                                 return Pen(item, i, self.props.actions.filterByType);
                             })}
 
-                            <a href="javascript:;" onClick={this.handleShowMore}>Show More</a>
-
                         </div>
+
+                        <div className="s-posts__results__pagination">
+                            {showMoreOrClear}
+                        </div>
+
                     </div>
                 </div>
 
@@ -89,6 +103,7 @@ function mapStateToProps(state, ownProps) {
             users: state.pens.users,
             usersSelected: state.pens.usersSelected
         },
+        total: 0,
         pens: state.pens.pens,
         end: state.pens.end,
         query: state.pens.query
@@ -125,6 +140,8 @@ function mapStateToProps(state, ownProps) {
         });
     }
 
+    y.total = y.pens.length;
+
     // now lets paginate
     y.pens = y.pens.slice(y.start, y.end);
 
@@ -136,7 +153,7 @@ function mapStateToProps(state, ownProps) {
     without this being provided in the connect method, it will automagically add the dispatch method in the component props
     any component wrapped with connect() call will receive a dispatch function as a prop, and any state it needs from the global state
     bindActionCreators binds all actions supplied to this.props.actions.XXX within the component
-    doing this allows our components to not have to know we are using redux, but simply call the prop
+    doing this allows our components to not have to know we are using redux, but simply call the prop, also this behind the scenes prepares our calls into the redux dispatch method
 */
 function mapDispatchToProps(dispatch) {
     return {

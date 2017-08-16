@@ -19,6 +19,10 @@
         }
 
         @include bp(lg) {
+            width: 20%;
+        }
+
+        @include bp(xl) {
             width: 16.66%;
         }
     }

@@ -1,12 +1,12 @@
 .c-dropdown {
-    background: #dd4b39;
+    background: $brand-color;
     position: relative;
     z-index: 100;
 
     //our toggle for hovering on mobile
     &__toggle {
         display: inline-block;
-        background: #dd4b39;
+        background: $brand-color;
         padding: 1rem 3rem;
         width: 100%;
         color: #fff;
@@ -44,36 +44,35 @@
                 display: inline-block;
                 padding: 1rem 3rem;
                 color: #fff;
-                background: #00aced;
+                background: darken($brand-color, 5%);
                 width: 100%;
                 box-sizing: border-box;
                 text-decoration: none;
                 position: relative;
+                text-transform: capitalize;
 
                 &:before {
-                    content: " ";
+                    font-family: "FontAwesome";
+                    content: "\f096";
                     position: absolute;
                     top: 50%;
                     transform: translateY(-50%);
                     left: 1rem;
-                    width: 10px;
-                    height: 10px;
-                    background: red;
-                    opacity: 0;
+                    line-height: 1;
                 }
             }
-            
+
 
             &:hover {
                 a {
-                    background: darken(#00aced, 10%);
+                    background: darken($brand-color, 10%);
                 }
             }
 
             &--active {
                 a {
                     &:before {
-                        opacity: 1;
+                        content: "\f046";
                     }
                 }
             }

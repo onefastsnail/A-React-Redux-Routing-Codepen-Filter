@@ -22,6 +22,11 @@
             max-width: 2000px;
         }
 
+        &__pagination {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
     }
 
     // bad but for now im doing it
@@ -29,6 +34,6 @@
         height: 100%;
         width: 100%;
         padding: 1rem;
-    }   
+    }
 
 }

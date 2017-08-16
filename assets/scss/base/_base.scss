@@ -7,8 +7,29 @@ html {
 	outline:none;
 }
 
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 1.462;
+    background-color: $body-bg;
+	color: $text-color;
+}
+
 // a little dirty hack to speed our beloved animations from animate.css
 .animated {
     -webkit-animation-fill-mode: backwards;
     animation-duration: 0.2s;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+
+	@include transition(all, 0.1s);
+
+	&:hover, &:focus {
+		text-decoration: none;
+		cursor: pointer;
+		color: inherit;
+	}
+	&:focus {}
 }

@@ -16,13 +16,13 @@ class App extends React.Component {
     render() {
         return (
             <section>
-                <div className="container">
+                {/* <div className="container">
                     <ul>
                         <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
                         <li><Link to="/api" activeClassName="active">Api</Link></li>
                         <li><Link to="/dev" activeClassName="active">Dev</Link></li>
                     </ul>
-                </div>
+                </div> */ }
 
                 {this.props.children}
 

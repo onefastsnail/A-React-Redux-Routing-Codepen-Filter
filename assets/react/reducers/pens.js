@@ -102,6 +102,16 @@ const pensReducer = (state = initialState, action) => {
 
             return y;
 
+        case types.CLEAR_FILTER:
+            y = Object.assign({}, state);
+
+            y.query = '';
+            y.typesSelected = [];
+            y.usersSelected = [];
+            y.end = y.perPage;
+
+            return y;
+
         case types.FETCH_PEN_SUCCESS:
             y = Object.assign({}, state);
 
