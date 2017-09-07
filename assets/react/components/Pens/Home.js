@@ -14,7 +14,6 @@ class Home extends React.Component {
 
     constructor(props) {
 
-        // this calls the parent constructor
         super(props);
 
         // lets correct the this context of some of these class methods

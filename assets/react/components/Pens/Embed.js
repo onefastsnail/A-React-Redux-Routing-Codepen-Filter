@@ -3,13 +3,10 @@ import { Link } from 'react-router-dom';
 
 class Embed extends React.Component {
 
-    //our constructor
     constructor(props) {
-        //this calls the parent constructor
         super(props);
     }
 
-    //Our method used by react, and is required for components
     render() {
         return (
             <div className="container">
