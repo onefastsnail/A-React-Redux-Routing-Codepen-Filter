@@ -26,7 +26,8 @@ class Results extends React.Component {
                     <div className="l-card-listing">
 
                         {this.props.pens.map(function (item, i) {
-                            return Pen(item, i, self.props.handleFilterByType);
+                            //return Pen(item, i, self.props.handleFilterByType);
+                            return <Pen key={i} handler={self.props.handleFilterByType} item={item} />
                         })}
 
                     </div>

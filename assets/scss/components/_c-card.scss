@@ -4,13 +4,38 @@
     position: relative;
 
     &__image {
-        background: url(http://fakeimg.pl/650x450/000000/fff/?text=img) center center no-repeat;
-        background-size: cover;
-        padding-top: 80%;
-        position: relative;
 
-        &--skewed {
-            clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%);
+        position: relative;
+        display: block;
+
+        &:before {
+            display: block;
+            content: "\f1ce";
+            font-family: FontAwesome;
+            color: #ccc;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation: infinite-spinning 2s infinite;
+        }
+
+        div {
+            background-size: cover;
+            padding-top: 80%;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.3s;
+
+            &--skewed {
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%);
+            }
+
+            &.js-loaded {
+                opacity: 1;
+            }
         }
     }
 
@@ -79,3 +104,12 @@
     }
 
 }
+
+@keyframes infinite-spinning {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
