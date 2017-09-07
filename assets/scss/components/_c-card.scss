@@ -7,6 +7,8 @@
 
         position: relative;
         display: block;
+        border: 4px solid #fff;
+        overflow: hidden;
 
         &:before {
             display: block;
@@ -24,7 +26,7 @@
         div {
             background-position: center;
             background-size: cover;
-            padding-top: 80%;
+            padding-top: 70%;
             position: relative;
             z-index: 2;
             opacity: 0;
@@ -36,6 +38,12 @@
 
             &.js-loaded {
                 opacity: 1;
+            }
+        }
+
+        &:hover {
+            .c-card__meta {
+                bottom: 0;
             }
         }
     }
@@ -51,31 +59,49 @@
 
     &__meta {
         margin: 0;
-        padding: 0.5em;
-        font-size: 0.8em;
-        text-transform: capitalize;
+        padding: 0;
         position: absolute;
         z-index: 10;
-        bottom: 0;
+        bottom: -2em;
         left: 0;
+        width: 100%;
         background-color:$brand-color;
-        color: #fff;
-    }
+        transition: all 0.4s;
 
-    &__author {
-        font-size: 0.7em;
-        margin: 0;
+        li {
+            display: inline-block;
+
+            color: #fff;
+            padding: 0.5em;
+            font-size: 0.7em;
+
+            &:before {
+                content: "\f120";
+                font-family: FontAwesome;
+                margin-right: 0.4em;
+            }
+
+            &:not(:last-child){
+                margin-right: 0.4em;
+            }
+
+            &:first-child {
+                &:before {
+                    content: "\f007";
+                    font-family: FontAwesome;
+                    margin-right: 0.4em;
+                }
+            }
+        }
     }
 
     &__title {
-        margin: 0.4em 0 0 0;
-        height: 3.5em;
-        font-size: 1.2em;
-
-        @include bp(sm) {
-            height: 2.9em;
-        }
-
+        margin: 0;
+        font-size: 1em;
+        text-transform: capitalize;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     &__icon {
@@ -102,6 +128,11 @@
 
     &--shadow {
         box-shadow: 0 0 20px 1px rgba(#666, 0.3);
+        transition: all 0.4s;
+
+        &:hover {
+            box-shadow: 0 0 40px 1px rgba(#666, 0.5);
+        }
     }
 
 }

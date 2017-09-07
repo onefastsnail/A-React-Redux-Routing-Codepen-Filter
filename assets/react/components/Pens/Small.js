@@ -17,7 +17,6 @@ class Pen extends React.Component {
         // find the element
         let penEl = document.querySelector('div[data-pen="' + this.props.item.id + '"] .c-card__image__holder');
 
-
         // lets create a cheeky quick lazy load
         if(penEl){
             // create the image
@@ -52,6 +51,8 @@ class Pen extends React.Component {
 
     handleUserChange(e) {
 
+        e.preventDefault();
+
         let x = {
             key: 'usersSelected',
             value: e.target.dataset.value
@@ -64,14 +65,16 @@ class Pen extends React.Component {
         return (
             <div data-pen={this.props.item.id} className="l-card-listing__item animated zoomIn">
                 <div className="c-card c-card--shadow">
-                    <Link to={"/embed/" + this.props.item.slug} className="c-card__image">
+                    <Link to={"/embed/" + this.props.item.slug} className="c-card__image" title={this.props.item.title}>
                         <div className="c-card__image__holder">
-                            <p className="c-card__meta" onClick={this.handleTypeChange} data-value={this.props.item.type}>{this.props.item.type}</p>
+                            <ul className="c-card__meta">
+                                <li onClick={this.handleUserChange} data-value={this.props.item.user}>{this.props.item.user}</li>
+                                <li onClick={this.handleTypeChange} data-value={this.props.item.type}>{this.props.item.type}</li>
+                            </ul>
                         </div>
                     </Link>
                     <div className="c-card__content">
-                        <p className="c-card__author">By <a href="javascript:;" target="_blank" onClick={this.handleUserChange} data-value={this.props.item.user}>{this.props.item.user}</a></p>
-                        <h3 className="c-card__title"><Link to={"/embed/" + this.props.item.slug}>{this.props.item.title}</Link></h3>
+                        <h3 className="c-card__title"><Link to={"/embed/" + this.props.item.slug} title={this.props.item.title}>{this.props.item.title}</Link></h3>
                     </div>
                 </div>
             </div>

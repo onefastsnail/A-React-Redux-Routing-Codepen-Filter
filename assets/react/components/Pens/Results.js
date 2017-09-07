@@ -3,13 +3,10 @@ import Pen from './Small';
 
 class Results extends React.Component {
 
-    //our constructor
     constructor(props) {
-        //this calls the parent constructor
         super(props);
     }
 
-    //Our method used by react, and is required for components
     render() {
 
         let self = this;
@@ -26,7 +23,6 @@ class Results extends React.Component {
                     <div className="l-card-listing">
 
                         {this.props.pens.map(function (item, i) {
-                            //return Pen(item, i, self.props.handleFilterByType);
                             return <Pen key={i} handler={self.props.handleFilterByType} item={item} />
                         })}
 

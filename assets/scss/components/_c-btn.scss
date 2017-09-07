@@ -3,7 +3,7 @@
     font-family: inherit;
     font-size: inherit;
     color: #fff;
-    background: $brand-color;
+    background: darken($brand-color, 7%);
     cursor: pointer;
     padding: 1.3rem 3rem;
     display: inline-block;
@@ -25,7 +25,7 @@
     }
 
     &:hover {
-        background: darken($brand-color, 5%);
+        background: darken($brand-color, 8%);
         color: #fff;
     }
 

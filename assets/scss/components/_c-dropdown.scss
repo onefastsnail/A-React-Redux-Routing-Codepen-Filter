@@ -1,17 +1,18 @@
 .c-dropdown {
-    background: $brand-color;
+    background: darken($brand-color, 7%);
     position: relative;
     z-index: 100;
 
     //our toggle for hovering on mobile
     &__toggle {
         display: inline-block;
-        background: $brand-color;
+        background: darken($brand-color, 7%);
         padding: 1rem 3rem;
         width: 100%;
         color: #fff;
         cursor: pointer;
         position: relative;
+        text-transform: capitalize;
 
         span {
             position: absolute;
@@ -44,12 +45,11 @@
                 display: inline-block;
                 padding: 1rem 3rem;
                 color: #fff;
-                background: darken($brand-color, 5%);
+                background: darken($brand-color, 8%);
                 width: 100%;
                 box-sizing: border-box;
                 text-decoration: none;
                 position: relative;
-                text-transform: capitalize;
 
                 &:before {
                     font-family: "FontAwesome";

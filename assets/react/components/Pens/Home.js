@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as penActions from '../../actions/pens';
-import { Route, Link, Switch, withRouter} from 'react-router-dom';
+import { Route, Link, Switch, withRouter, } from 'react-router-dom';
 //import PropTypes from 'prop-types';
 
 //our components
@@ -20,10 +20,12 @@ class Home extends React.Component {
         this.handleShowMore = this.handleShowMore.bind(this);
         this.handleQueryChange = this.handleQueryChange.bind(this);
         this.handleShowMoreOrClear = this.handleShowMoreOrClear.bind(this);
+        this.handleTypeChange = this.handleTypeChange.bind(this);
     }
 
     handleQueryChange(event) {
         //this.props.dispatch(penActions.searchPens(event.target.value)); // or
+        this.props.history.push('/');
         this.props.dispatch(this.props.actions.searchPens(event.target.value));
     }
 
@@ -35,6 +37,12 @@ class Home extends React.Component {
         this.props.actions.clearFilter();
     }
 
+    handleTypeChange(data){
+        this.props.history.push('/');
+        this.props.dispatch(this.props.actions.searchPens(''));
+        this.props.actions.filterByType(data);
+    }
+
     //Our method used by react, and is required for components
     render() {
 
@@ -43,7 +51,7 @@ class Home extends React.Component {
 
                 <Filter
                     filter={this.props.filter}
-                    handleTypeChange={this.props.actions.filterByType}
+                    handleTypeChange={this.handleTypeChange}
                     handleClearFilter={this.handleShowMore}
                     handleQueryChange={this.handleQueryChange}
                     handleSortChange={this.handleShowMore}
@@ -148,5 +156,6 @@ function mapDispatchToProps(dispatch) {
     compare to flux we do not have to manually subsbrive to events emitted from the store upon change as redux does this for us
     easier use of stateless components, as no lifecycle methods required as above
     map only state we need, better performance
+    we need to wrap our connected redux component with our router using withRouter
 */
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
