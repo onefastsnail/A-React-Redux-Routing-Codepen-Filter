@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as penActions from '../../actions/pens';
-import { Link, IndexLink } from 'react-router';
-import PropTypes from 'prop-types';
+import { Route, Link, Switch, withRouter} from 'react-router-dom';
+//import PropTypes from 'prop-types';
 
 //our components
 import Filter from './Filter';
-import Pen from './Small';
+import Results from './Results';
+import Embed from './Embed';
 
 class Home extends React.Component {
 
@@ -38,14 +39,6 @@ class Home extends React.Component {
     //Our method used by react, and is required for components
     render() {
 
-        let self = this;
-
-        let showMoreOrClear;
-
-        if(this.props.end < this.props.total){
-            showMoreOrClear = <a href="javascript:;" className="c-btn" onClick={this.handleShowMore}>Show More</a>;
-        }
-
         return (
             <section className="s-posts">
 
@@ -59,22 +52,10 @@ class Home extends React.Component {
                     totalPens={this.props.total}
                 />
 
-                <div className="s-posts__results">
-                    <div className="s-posts__results__container">
-                        <div className="l-card-listing">
-
-                            {this.props.pens.map(function (item, i) {
-                                return Pen(item, i, self.props.actions.filterByType);
-                            })}
-
-                        </div>
-
-                        <div className="s-posts__results__pagination">
-                            {showMoreOrClear}
-                        </div>
-
-                    </div>
-                </div>
+                <Switch>
+                    <Route path="/" exact render={(props) => (<Results pens={this.props.pens} total={this.props.total} end={this.props.end} handleShowMore={this.handleShowMore} handleFilterByType={this.props.actions.filterByType} {...props} />)} />
+                    <Route path="/embed/:slug" component={Embed} />
+                </Switch>
 
             </section>
 
@@ -84,9 +65,9 @@ class Home extends React.Component {
 
 // we can catch a lot of bugs with typechecking so lets do it
 // Home.propTypes = {
-//   actions: PropTypes.object.isRequired,
-//   posts: PropTypes.array.isRequired,
-//   end: PropTypes.number.isRequired
+//   actions: PropTypes.object,
+//   pens: PropTypes.array,
+//   end: PropTypes.number
 // };
 
 /*
@@ -169,4 +150,4 @@ function mapDispatchToProps(dispatch) {
     easier use of stateless components, as no lifecycle methods required as above
     map only state we need, better performance
 */
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));

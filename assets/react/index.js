@@ -1,12 +1,11 @@
 //import 'babel-polyfill'; // some es6 features still not in babel
 import React from 'react';
-import routes from './routes';
 import { render } from 'react-dom';
-import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux'; // only used to connect react container components to redux
+import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store/index';
 import { fetchPens } from './actions/pens';
-import App from './components/Hello';
+import App from './components/Pens/Home';
 
 // lets import our sexy style sheets
 import '../scss/main.scss';
@@ -30,7 +29,9 @@ store.dispatch(fetchPens());
 */
 render(
     <Provider store={store}>
-        <Router history={browserHistory} routes={routes} />
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
     </Provider>,
     document.getElementById('reacting-pens')
 );

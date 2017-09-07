@@ -62,9 +62,7 @@ export function fetchPens() {
 
         // lets now send async call to get some data
         axios.get('assets/api/pens.json', {
-            params: {
-                ID: 12345
-            }
+            params: {}
         })
         .then(function (response) {
             //once we have some data lets dispatch another redux event for our reducers to update state
