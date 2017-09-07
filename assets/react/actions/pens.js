@@ -2,8 +2,8 @@ import axios from 'axios';
 import * as types from './types';
 
 /*
-    an action creater, it creates an action payload
-    actions are the only way to get data into the store
+    an action creater, it creates an action payload that can be dispatched
+    dispatching actions are the only way to get data into the store, as reducers create new state from those payloads
 */
 export function searchPens(query) {
     // in es6 properties being passed without assignment will be assigned to by thier var name in this content, kind of like compact in php
@@ -44,6 +44,7 @@ export const receivePen = (json) => ({
 
 export function fetchPens() {
 
+    // as action creators should return functions, we use Thunks middleware to allow our dispatch method to be fed to our invoked functions
     // Thunk middleware knows how to handle functions.
     // It passes the dispatch method as an argument to the function,
     // thus making it able to dispatch actions itself.

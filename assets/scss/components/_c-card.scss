@@ -7,6 +7,7 @@
         background: url(http://fakeimg.pl/650x450/000000/fff/?text=img) center center no-repeat;
         background-size: cover;
         padding-top: 80%;
+        position: relative;
 
         &--skewed {
             clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%);
@@ -23,22 +24,30 @@
     }
 
     &__meta {
-        margin: 0 0 1rem 0;
+        margin: 0;
+        padding: 0.5em;
         font-size: 0.8em;
         text-transform: capitalize;
+        position: absolute;
+        z-index: 10;
+        bottom: 0;
+        left: 0;
+        background-color:$brand-color;
+        color: #fff;
     }
 
     &__author {
-        font-size: 0.8em;
+        font-size: 0.7em;
+        margin: 0;
     }
 
     &__title {
-        margin: 0 0 2em;
+        margin: 0.4em 0 0 0;
         height: 3.5em;
         font-size: 1.2em;
 
         @include bp(sm) {
-            height: 2.2em;
+            height: 2.9em;
         }
 
     }

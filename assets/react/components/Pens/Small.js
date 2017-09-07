@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, IndexLink } from 'react-router';
+import { Link } from 'react-router';
 
 // here we are using a stateless component, cozzz we can ;)
 const Pen = function (props, key, handler) {
 
-    const handleTypeChange = function(e){
+    const handleTypeChange = function (e) {
 
         let x = {
             key: 'typesSelected',
@@ -15,7 +15,7 @@ const Pen = function (props, key, handler) {
         handler(x);
     };
 
-    const handleUserChange = function(e){
+    const handleUserChange = function (e) {
 
         let x = {
             key: 'usersSelected',
@@ -32,11 +32,12 @@ const Pen = function (props, key, handler) {
     return (
         <div className="l-card-listing__item animated zoomIn" key={key}>
             <div className="c-card c-card--shadow">
-                <div className="c-card__image" style={backgroundStyle}></div>
-                <div className="c-card__content">
+                <div className="c-card__image" style={backgroundStyle}>
                     <p className="c-card__meta"><a href="javascript:;" onClick={handleTypeChange} data-value={props.type}>{props.type}</a></p>
-                    <h3 className="c-card__title"><a href={props.link} target="_blank">{props.title}</a></h3>
+                </div>
+                <div className="c-card__content">
                     <p className="c-card__author">By <a href="javascript:;" target="_blank" onClick={handleUserChange} data-value={props.user}>{props.user}</a></p>
+                    <h3 className="c-card__title"><Link to={"/embed/"+props.slug}>{props.title}</Link></h3>
                 </div>
             </div>
         </div>

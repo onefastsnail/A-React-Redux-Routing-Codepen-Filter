@@ -1,11 +1,10 @@
 // Colors
-$green:			#0ac572;
-$almost-white:	#e4e4e4;
-$almost-black:	#22182c;
-
+$green:#0ac572;
+$almost-white:#e4e4e4;
+$almost-black:#22182c;
 
 // Link colors to meaningful variables
-$brand-color:		$green;
-$body-bg:			$almost-white;
-$link-color:		$brand-color;
-$link-hover-color: 	darken($link-color, 15%);
+$brand-color: $green;
+$body-bg: $almost-white;
+$link-color: $brand-color;
+$link-hover-color: darken($link-color, 15%);

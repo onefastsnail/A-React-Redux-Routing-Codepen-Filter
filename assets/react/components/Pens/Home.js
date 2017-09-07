@@ -56,6 +56,7 @@ class Home extends React.Component {
                     handleQueryChange={this.handleQueryChange}
                     handleSortChange={this.handleShowMore}
                     handleScrollChange={this.handleShowMore}
+                    totalPens={this.props.total}
                 />
 
                 <div className="s-posts__results">
