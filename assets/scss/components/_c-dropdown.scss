@@ -1,17 +1,17 @@
 .c-dropdown {
-    background: darken($brand-color, 7%);
+    background: $brand-color;
     position: relative;
-    z-index: 100;
 
     //our toggle for hovering on mobile
     &__toggle {
         display: inline-block;
-        background: darken($brand-color, 7%);
+        background: $brand-color;
         padding: 1rem 3rem;
         width: 100%;
         color: #fff;
         cursor: pointer;
         position: relative;
+        z-index: 1;
         text-transform: capitalize;
 
         span {
@@ -37,6 +37,7 @@
         opacity: 0;
         transform: translate(0, -50%) scale3d(1, 0, 1);
         position: absolute;
+        z-index: 2;
         width: 100%;
 
         &__item {

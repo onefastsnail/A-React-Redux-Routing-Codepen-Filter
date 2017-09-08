@@ -7,7 +7,7 @@
 
         position: relative;
         display: block;
-        border: 4px solid #fff;
+        //border: 4px solid #fff;
         overflow: hidden;
 
         &:before {
@@ -23,7 +23,7 @@
             animation: infinite-spinning 2s infinite;
         }
 
-        div {
+        &__holder {
             background-position: center;
             background-size: cover;
             padding-top: 70%;
@@ -32,29 +32,45 @@
             opacity: 0;
             transition: opacity 0.3s;
 
-            &--skewed {
-                clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%);
-            }
-
             &.js-loaded {
                 opacity: 1;
             }
         }
 
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($brand-color, 0.9);
+        z-index: 3;
+        transition: all 0.4s;
+        opacity: 0;
+
+        &:before {
+            display: block;
+            content: "\f06e";
+            font-family: FontAwesome;
+            font-size: 4em;
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
         &:hover {
-            .c-card__meta {
-                bottom: 0;
-            }
+            opacity: 1;
         }
     }
 
     &__content {
         position: relative;
-        padding: 1.7em 1em 1em;
-
-        @include bp(sm) {
-            padding-top: 1.2em;
-        }
+        padding: 0.8em;
+        display: none;
     }
 
     &__meta {
@@ -62,34 +78,30 @@
         padding: 0;
         position: absolute;
         z-index: 10;
-        bottom: -2em;
-        left: 0;
-        width: 100%;
-        background-color:$brand-color;
+        bottom: 0.4em;
+        left: 0.4em;
         transition: all 0.4s;
 
         li {
             display: inline-block;
-
             color: #fff;
+            background-color:$brand-color;
             padding: 0.5em;
             font-size: 0.7em;
 
-            &:before {
-                content: "\f120";
-                font-family: FontAwesome;
-                margin-right: 0.4em;
-            }
-
             &:not(:last-child){
                 margin-right: 0.4em;
+
+                &:before {
+                    content: "\f12e";
+                    font-family: FontAwesome;
+                }
             }
 
             &:first-child {
                 &:before {
                     content: "\f007";
                     font-family: FontAwesome;
-                    margin-right: 0.4em;
                 }
             }
         }
@@ -128,11 +140,6 @@
 
     &--shadow {
         box-shadow: 0 0 20px 1px rgba(#666, 0.3);
-        transition: all 0.4s;
-
-        &:hover {
-            box-shadow: 0 0 40px 1px rgba(#666, 0.5);
-        }
     }
 
 }

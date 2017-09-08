@@ -1,23 +1,16 @@
-# Codepen React Redux Filter
+# A React Redux Routing Codepen Filter
+
+Work in progress. Just a prototype for an idea at work :) using React, Redux, and React Router.
 
 ## Usage
 
-1. If you need to run a local web server run `./node_modules/.bin/http-server`
-3. run `npm install`
-3. To develop run `npm run start`
+1. Install your node modules `npm install`
+3. To develop run `npm run start` which runs a local server for you
 4. Visit [http://127.0.0.1:8080](http://127.0.0.1:8080)
 
 ## How it works
 
-* We create our routes as normal
-* We then wrap our routes within a provider component supplied from `react-redux` which attaches our state/store to our react application
-* On our controller/container components we then use the connect method from `react-redux` to map our actions and props to that components properties.
-
-### Timeline
-
-* Upon bootup we trigger a dispatch with an action creator.
-* This action creator submits an async request off to our API.
-* 
+* Comin Soon
 
 ## Notes
 * Using Webpack for speedy development

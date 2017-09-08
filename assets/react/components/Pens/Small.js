@@ -15,7 +15,7 @@ class Pen extends React.Component {
     componentDidMount() {
 
         // find the element
-        let penEl = document.querySelector('div[data-pen="' + this.props.item.id + '"] .c-card__image__holder');
+        let penEl = document.querySelector('div[data-pen="' + this.props.item.slug + '"] .c-card__image__holder');
 
         // lets create a cheeky quick lazy load
         if(penEl){
@@ -32,7 +32,7 @@ class Pen extends React.Component {
                 penEl.style.backgroundImage = 'url(' + self.props.item.image + ')';
 
                 // toggle the class to animate in
-                penEl.className = 'js-loaded';
+                penEl.className += ' js-loaded';
             };
         }
     }
@@ -63,15 +63,16 @@ class Pen extends React.Component {
 
     render() {
         return (
-            <div data-pen={this.props.item.id} className="l-card-listing__item animated zoomIn">
+            <div data-pen={this.props.item.slug} className="l-card-listing__item animated zoomIn">
                 <div className="c-card c-card--shadow">
                     <Link to={"/embed/" + this.props.item.slug} className="c-card__image" title={this.props.item.title}>
-                        <div className="c-card__image__holder">
-                            <ul className="c-card__meta">
-                                <li onClick={this.handleUserChange} data-value={this.props.item.user}>{this.props.item.user}</li>
-                                <li onClick={this.handleTypeChange} data-value={this.props.item.type}>{this.props.item.type}</li>
-                            </ul>
-                        </div>
+                        <div className="c-card__image__holder"></div>
+                        <ul className="c-card__meta">
+                            <li onClick={this.handleUserChange} title={this.props.item.user} data-value={this.props.item.user}></li>
+                            <li onClick={this.handleTypeChange} title={this.props.item.type} data-value={this.props.item.type}></li>
+                            <li>{this.props.item.title}</li>
+                        </ul>
+                        <div className="c-card__overlay"></div>
                     </Link>
                     <div className="c-card__content">
                         <h3 className="c-card__title"><Link to={"/embed/" + this.props.item.slug} title={this.props.item.title}>{this.props.item.title}</Link></h3>

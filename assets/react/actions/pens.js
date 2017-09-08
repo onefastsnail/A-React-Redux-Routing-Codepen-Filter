@@ -66,10 +66,10 @@ export function fetchPens() {
         })
         .then(function (response) {
             //once we have some data lets dispatch another redux event for our reducers to update state
-            dispatch(receivePens(response.data))
+            dispatch(receivePens(response.data));
         })
         .catch(function (error) {
-            console.log(error);
+            //console.log(error);
         });
 
     };

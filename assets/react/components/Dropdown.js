@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Dropdown extends React.Component {
 
     constructor(props) {
         super(props);
 
-        // fix the bind context
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -44,5 +44,12 @@ class Dropdown extends React.Component {
         );
     }
 }
+
+// Dropdown.propTypes = {
+//   filter: PropTypes.object,
+//   options: PropTypes.array,
+//   handler: PropTypes.function,
+//   title: PropTypes.string
+// };
 
 export default Dropdown;

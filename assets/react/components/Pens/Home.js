@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as penActions from '../../actions/pens';
 import { Route, Link, Switch, withRouter, } from 'react-router-dom';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 //our components
 import Filter from './Filter';
@@ -37,13 +37,12 @@ class Home extends React.Component {
         this.props.actions.clearFilter();
     }
 
-    handleTypeChange(data){
+    handleTypeChange(data) {
         this.props.history.push('/');
         this.props.dispatch(this.props.actions.searchPens(''));
         this.props.actions.filterByType(data);
     }
 
-    //Our method used by react, and is required for components
     render() {
 
         return (
@@ -71,11 +70,13 @@ class Home extends React.Component {
 }
 
 // we can catch a lot of bugs with typechecking so lets do it
-// Home.propTypes = {
-//   actions: PropTypes.object,
-//   pens: PropTypes.array,
-//   end: PropTypes.number
-// };
+Home.propTypes = {
+    actions: PropTypes.object,
+    filter: PropTypes.object,
+    pens: PropTypes.array,
+    end: PropTypes.number,
+    total: PropTypes.number
+};
 
 /*
     connecting redux to react

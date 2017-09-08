@@ -21,7 +21,7 @@ class Filter extends React.Component {
 
                     <div className="row">
                         <div className="col-sm-4">
-                            <input name="query" type="text" className="s-posts__search" id="search" onChange={this.props.handleQueryChange} value={this.props.filter.query} placeholder={"Search "+this.props.totalPens + " pens"} />
+                            <input name="query" type="text" className="s-posts__search" id="search" onChange={this.props.handleQueryChange} value={this.props.filter.query} placeholder={"Search " + this.props.totalPens + " pens"} />
                         </div>
                         <div className="col-sm-4">
                             <Dropdown
